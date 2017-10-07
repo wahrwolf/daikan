@@ -5,5 +5,6 @@ create table systems (
 	title text not null,
 	description text,
 	active boolean, 
-	group text not null
+	systemgroup text not null
 );
+
