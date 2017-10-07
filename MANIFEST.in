@@ -1,0 +1,4 @@
+graft terminal/templates
+graft terminal/static
+
+include cdh/schema.sql

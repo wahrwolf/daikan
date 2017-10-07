@@ -1,0 +1,46 @@
+[
+    {
+        "id":"LSS",
+        "title": "Life Support System",
+        "description": "A group of devices that allow a being to survive in space",
+        "online": false
+    },
+    {
+        "id":"ACS",
+        "title": "Attitude Control System",
+        "description": "Sensors and actuators that allow the orientation and movement in space",
+        "online": false
+    },
+    {
+        "id":"CDH",
+        "title": "Command and data handling",
+        "description": "Systems to perform validation, decoding and broadcasting of commands to the other systems",
+        "online": true
+    },
+    {
+        "id":"COM",
+        "title": "External Commuincation",
+        "description": "Commuincatin systems needed to contact external stations and agents",
+        "online": true
+    },
+    {
+        "id":"EPS",
+        "title": "Power System",
+        "description": "Power generation and distribution systerm",
+        "online": true
+    },
+    {
+        "id":"TCS",
+        "title": "Thermal Control Systems",
+        "description": "",
+        "online": true
+
+    },
+    {
+        "id":"GNC",
+        "title": "Guidance, Navigation and Control",
+        "description": "Systems needed to calculate, navigate and steer the path",
+        "online": false 
+
+    }
+]

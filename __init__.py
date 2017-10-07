@@ -1,0 +1,1 @@
+from .daikan import app
