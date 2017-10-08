@@ -57,8 +57,7 @@ def index():
 def getSubsystems():
     db = getDBConnection()
     cur = db.execute("select id, title, description, active from systems")
-    entries = cur.fetchall()
-    print(entries)
+    entries = [ {key:row[key] for key in row.keys() } for row in cur.fetchall()]
     return jsonify({"subsystems":entries})
 
 @app.route("/daikan/CDH/api/v0.1/subsystems", methods=["POST"])
@@ -77,19 +76,18 @@ def registerSubsystem():
     print(values)
     db.execute(query, values)
     db.commit()
-    
+    return getSubsystemController(request.json.get("id")), 201
 
-@app.route("/daikan/<controllerID>/status")
+@app.route("/daikan/<controllerID>/status", methods=["GET"])
 @app.route("/daikan/CDH/api/v0.1/subsystems/<controllerID>", methods=["GET"])
 def getSubsystemController(controllerID):
-    controller = [ controller for controller in subsystems if controller ["id"]==controllerID]
-    if len(controller) == 0:
+    print(controllerID)
+    db = getDBConnection()
+    cur = db.execute("select id, title, description, active from systems where id is ?", (controllerID,))
+    entries = [ {key:row[key] for key in row.keys() } for row in cur.fetchall()]
+    if len(entries) == 0:
         abort(404)
-    elif len(controller) != 1:
-        abort(400)
-
-    return jsonify({"subsystems":controller[0]})
-
+    return jsonify({"subsystems":entries})
 
 if __name__ == "__main__":
     app.run(debug=True)
